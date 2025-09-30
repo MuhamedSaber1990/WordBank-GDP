@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <canvas id="chart" width="800" height="400"></canvas>
+
+    <script>
+      // Pass server data into client JS
+      const data = <%- JSON.stringify(data) %>;
+      console.log("Data from server:", data);
+
+      const years = data.map(d => d.year);
+      const values = data.map(d => d.value);
+
+      new Chart(document.getElementById("chart"), {
+        type: "line",
+        data: {
+          labels: years,
+          datasets: [{
+            label: "GDP per capita (constant 2015 US$)",
+            data: values,
+            borderColor: "blue",
+            backgroundColor: "lightblue",
+            fill: false,
+            tension: 0.1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: "GDP per capita (constant 2015 US$) in Lithuania"
+            }
+          },
+          scales: {
+            x: {
+              title: { display: true, text: "Year" }
+            },
+            y: {
+              title: { display: true, text: "GDP per capita (USD)" }
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
