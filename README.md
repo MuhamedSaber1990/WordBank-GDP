@@ -51,7 +51,7 @@ worldbank-gdp-visualization/
 
 ### On Replit  
 1. Create a new Repl → choose **Node.js**.  
-2. Upload the files (`server.js`, `views/index.ejs`, `package.json`).  
+2. Upload the files (`app.js`, `views/index.ejs`, `package.json`).  
 3. In the Shell, install dependencies:  
    ```bash
    npm install
